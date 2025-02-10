@@ -22,9 +22,11 @@ public class PlayerController : MonoBehaviour
     private ThrowableBox heldBox;
     private SpriteRenderer spriteRenderer;
     private float currentVelocityMagnitude;
+    public bool fromPortal;
 
     private void Awake()
     {
+        fromPortal = false;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (!groundCheck)
@@ -86,8 +88,19 @@ public class PlayerController : MonoBehaviour
     {
         // Handle movement
         Vector2 moveVelocity = rb.velocity;
-        moveVelocity.x = horizontalInput * moveSpeed;
+        if (fromPortal)
+        {
+            moveVelocity.x = moveVelocity.x + horizontalInput * moveSpeed * 0.05f;
 
+        }
+        else
+        {
+            moveVelocity.x = horizontalInput * moveSpeed;
+        }
+        if (isGrounded && fromPortal)
+        {
+            fromPortal = false;
+        }
         // Handle jumping
         if (jumpPressed && isGrounded)
         {
