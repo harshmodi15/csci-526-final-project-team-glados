@@ -5,11 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class PlayerRespawn : MonoBehaviour
 {
+    [SerializeField] private float fallThreshold = -10f;
     private Vector2 startPosition;
 
     void Start()
     {
         startPosition = transform.position;
+    }
+
+    void Update()
+    {
+        if (transform.position.y < fallThreshold)
+        {
+            Respawn();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
