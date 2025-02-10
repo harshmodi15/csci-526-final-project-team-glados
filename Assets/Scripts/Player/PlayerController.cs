@@ -69,21 +69,21 @@ public class PlayerController : MonoBehaviour
         currentVelocityMagnitude = rb.velocity.magnitude;
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Check if we hit an enemy
-        if (((1 << collision.gameObject.layer) & enemyLayer) != 0)
-        {
-            // Calculate damage based on velocity
-            float damage = currentVelocityMagnitude;
-            // Try to apply damage to enemy
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damage);
-            }
-        }
-    }
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (((1 << collision.gameObject.layer) & enemyLayer) != 0)
+    //     {
+    //         // Calculate damage based on velocity
+    //         float damage = currentVelocityMagnitude;
+    //         // Try to apply damage to enemy
+    //         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+    //         if (enemy != null)
+    //         {
+    //             enemy.TakeDamage(damage);
+    //         }
+    //     }
+    // }        // Check if we hit an enemy
+
     private void FixedUpdate()
     {
         // Handle movement
@@ -153,5 +153,10 @@ public class PlayerController : MonoBehaviour
         // Visualize interaction range
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, interactionRange);
+    }
+
+    public float GetCurrentVelocityMagnitude()
+    {
+        return currentVelocityMagnitude;
     }
 }
