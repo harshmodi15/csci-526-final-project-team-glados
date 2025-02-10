@@ -22,9 +22,11 @@ public class PlayerController : MonoBehaviour
     private ThrowableBox heldBox;
     private SpriteRenderer spriteRenderer;
     private float currentVelocityMagnitude;
+    public bool fromPortal;
 
     private void Awake()
     {
+        fromPortal = false;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (!groundCheck)
@@ -67,27 +69,38 @@ public class PlayerController : MonoBehaviour
         currentVelocityMagnitude = rb.velocity.magnitude;
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Check if we hit an enemy
-        if (((1 << collision.gameObject.layer) & enemyLayer) != 0)
-        {
-            // Calculate damage based on velocity
-            float damage = currentVelocityMagnitude;
-            // Try to apply damage to enemy
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damage);
-            }
-        }
-    }
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (((1 << collision.gameObject.layer) & enemyLayer) != 0)
+    //     {
+    //         // Calculate damage based on velocity
+    //         float damage = currentVelocityMagnitude;
+    //         // Try to apply damage to enemy
+    //         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+    //         if (enemy != null)
+    //         {
+    //             enemy.TakeDamage(damage);
+    //         }
+    //     }
+    // }        // Check if we hit an enemy
+
     private void FixedUpdate()
     {
         // Handle movement
         Vector2 moveVelocity = rb.velocity;
-        moveVelocity.x = horizontalInput * moveSpeed;
+        if (fromPortal)
+        {
+            moveVelocity.x = moveVelocity.x + horizontalInput * moveSpeed * 0.05f;
 
+        }
+        else
+        {
+            moveVelocity.x = horizontalInput * moveSpeed;
+        }
+        if (isGrounded && fromPortal)
+        {
+            fromPortal = false;
+        }
         // Handle jumping
         if (jumpPressed && isGrounded)
         {
@@ -140,5 +153,10 @@ public class PlayerController : MonoBehaviour
         // Visualize interaction range
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, interactionRange);
+    }
+
+    public float GetCurrentVelocityMagnitude()
+    {
+        return currentVelocityMagnitude;
     }
 }

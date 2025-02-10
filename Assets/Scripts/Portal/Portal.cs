@@ -11,6 +11,7 @@ public class Portal : MonoBehaviour
     private PortalType type;
     private Portal linkedPortal;
     private float lastTeleportTime;
+    private Vector2 portalNormal;
 
     public PortalType Type => type;
     public Portal LinkedPortal
@@ -24,9 +25,10 @@ public class Portal : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Initialize(PortalType portalType)
+    public void Initialize(PortalType portalType, Vector2 normal)
     {
         type = portalType;
+        portalNormal = normal;
         UpdatePortalColor();
     }
 
@@ -58,12 +60,16 @@ public class Portal : MonoBehaviour
         Vector2 enterVelocity = rb.velocity;
         Vector2 teleportPosition = linkedPortal.transform.position;
 
-        // Preserve momentum through portal
-        Vector2 exitVelocity = enterVelocity;
-        // TODO: Add rotation logic based on portal orientations
-        
-
+        // exit with the same magnitude as entering, but in the direction of the linked portal's normal
+        Vector2 exitVelocity = linkedPortal.portalNormal * enterVelocity.magnitude;
         // Teleport the object
+        other.transform.position = teleportPosition;
+        rb.velocity = exitVelocity;
+        if (other.CompareTag("Player"))
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            player.fromPortal = true;
+        }
         other.transform.position = teleportPosition;
         rb.velocity = exitVelocity;
 

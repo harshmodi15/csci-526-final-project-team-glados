@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Box
   - Trap
+  - Hostility
   layers:
   - Default
   - TransparentFX

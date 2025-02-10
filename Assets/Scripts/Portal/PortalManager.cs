@@ -5,16 +5,17 @@ public class PortalManager : MonoBehaviour
 {
     [Header("Portal Settings")]
     [SerializeField] private GameObject portalPrefab;
-    [SerializeField] private int maxPortals = 2;
     [SerializeField] private LayerMask portalPlacementMask;
     [SerializeField] private float minPortalDistance = 1f;
 
     private List<Portal> activePortals = new List<Portal>();
     private Camera mainCamera;
+    private PlayerController player;
 
     private void Start()
     {
         mainCamera = Camera.main;
+        player = FindObjectOfType<PlayerController>();
     }
 
     private void Update()
@@ -39,7 +40,9 @@ public class PortalManager : MonoBehaviour
     private void CreatePortal(PortalType type)
     {
         Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, portalPlacementMask);
+        Vector2 playerPosition = player.transform.position;
+        Vector2 direction = (mousePosition - playerPosition).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(playerPosition, direction, Mathf.Infinity, portalPlacementMask);
         if (hit.collider != null)
         {
             // Check if we can place a portal here
@@ -48,10 +51,12 @@ public class PortalManager : MonoBehaviour
             // Remove existing portal of same type if it exists
             RemovePortalOfType(type);
 
+            Vector2 normal = hit.normal;
+            float portalRotation = Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg + 90f;
             // Create new portal
-            GameObject portalObj = Instantiate(portalPrefab, hit.point, Quaternion.identity);
+            GameObject portalObj = Instantiate(portalPrefab, hit.point, Quaternion.Euler(0, 0, portalRotation));
             Portal portal = portalObj.GetComponent<Portal>();
-            portal.Initialize(type);
+            portal.Initialize(type, normal);
             activePortals.Add(portal);
 
             // Link portals if we have a pair

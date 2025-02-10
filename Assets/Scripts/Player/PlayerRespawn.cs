@@ -7,6 +7,8 @@ public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private float fallThreshold = -10f;
     private Vector2 startPosition;
+    
+    [HideInInspector] public bool PlayerSteppedOnHead = false;
 
     void Start()
     {
@@ -31,14 +33,17 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     Debug.Log("Collision detected with: " + collision.gameObject.name); // Debugging
-    //     if (collision.gameObject.CompareTag("Trap"))
-    //     {
-    //         Respawn();
-    //     }
-    // }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Debug.Log("Collision detected with: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Hostility"))
+        {
+            if (collision.gameObject.GetComponent<HeadTrigger>() == null)
+            {
+                Respawn();
+            }
+        }
+    }
 
     void Respawn()
     {

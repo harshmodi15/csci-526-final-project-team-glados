@@ -15,7 +15,6 @@ public class SpeedLimiter : MonoBehaviour
     {
         if (rb.velocity.magnitude > maxSpeed)
         {
-            print("Limiting speed" + rb.velocity.magnitude);
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
         
