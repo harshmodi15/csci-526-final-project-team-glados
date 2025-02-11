@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float jumpForce = 12f;
     [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private float maxShootingDistance = 50f;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask portalLayer;
 
     [Header("Interaction Settings")]
     [SerializeField] private KeyCode interactKey = KeyCode.E;
@@ -22,7 +24,9 @@ public class PlayerController : MonoBehaviour
     private ThrowableBox heldBox;
     private SpriteRenderer spriteRenderer;
     private float currentVelocityMagnitude;
+    private bool isLineVisible;
     public bool fromPortal;
+    public LineRenderer lineRenderer;
 
     private void Awake()
     {
@@ -32,6 +36,17 @@ public class PlayerController : MonoBehaviour
         if (!groundCheck)
         {
             groundCheck = transform;
+        }
+        if (lineRenderer == null)
+        {
+            isLineVisible = true;
+            lineRenderer = gameObject.AddComponent<LineRenderer>();
+            lineRenderer.startWidth = 0.1f;
+            lineRenderer.endWidth = 0.1f;
+            lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+            lineRenderer.startColor = Color.red;
+            lineRenderer.endColor = Color.red;
+            lineRenderer.sortingOrder = 100;
         }
     }
 
@@ -68,6 +83,30 @@ public class PlayerController : MonoBehaviour
         
         currentVelocityMagnitude = rb.velocity.magnitude;
 
+        // Draw line
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            isLineVisible = !isLineVisible;
+            lineRenderer.enabled = isLineVisible;
+        }
+        
+        if (isLineVisible)
+        {
+            Vector2 start = transform.position;
+            Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+            RaycastHit2D hit = Physics2D.Raycast(start, direction, maxShootingDistance, portalLayer);
+            // line rendering above all other objects
+            if (hit.collider != null)
+            {
+                lineRenderer.SetPosition(0, start);
+                lineRenderer.SetPosition(1, hit.point);
+            }
+            else
+            {
+                lineRenderer.SetPosition(0, start);
+                lineRenderer.SetPosition(1, start + direction * maxShootingDistance);
+            }
+        }
     }
     // private void OnCollisionEnter2D(Collision2D collision)
     // {

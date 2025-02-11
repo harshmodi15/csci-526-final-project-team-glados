@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Portal : MonoBehaviour
@@ -38,7 +39,7 @@ public class Portal : MonoBehaviour
         spriteRenderer.color = type == PortalType.Blue ? bluePortalColor : orangePortalColor;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (linkedPortal == null) return;
         if (Time.time - lastTeleportTime < teleportCooldown) return;
@@ -63,16 +64,13 @@ public class Portal : MonoBehaviour
         // exit with the same magnitude as entering, but in the direction of the linked portal's normal
         Vector2 exitVelocity = linkedPortal.portalNormal * enterVelocity.magnitude;
         // Teleport the object
-        other.transform.position = teleportPosition;
+        other.transform.position = teleportPosition + linkedPortal.portalNormal * math.max(transform.localScale.x, transform.localScale.y);
         rb.velocity = exitVelocity;
         if (other.CompareTag("Player"))
         {
             PlayerController player = other.GetComponent<PlayerController>();
             player.fromPortal = true;
         }
-        other.transform.position = teleportPosition;
-        rb.velocity = exitVelocity;
-
         // Update teleport cooldown
         lastTeleportTime = Time.time;
         linkedPortal.lastTeleportTime = Time.time;

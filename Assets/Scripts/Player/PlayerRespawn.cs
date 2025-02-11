@@ -8,7 +8,6 @@ public class PlayerRespawn : MonoBehaviour
     [SerializeField] private float fallThreshold = -10f;
     private Vector2 startPosition;
     
-    [HideInInspector] public bool PlayerSteppedOnHead = false;
 
     void Start()
     {
