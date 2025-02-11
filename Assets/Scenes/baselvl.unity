@@ -6441,10 +6441,14 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 8
   groundCheckRadius: 1
+  maxShootingDistance: 50
   groundLayer:
     serializedVersion: 2
     m_Bits: 320
   groundCheck: {fileID: 0}
+  portalLayer:
+    serializedVersion: 2
+    m_Bits: 0
   interactKey: 101
   boxLayer:
     serializedVersion: 2
@@ -6454,6 +6458,7 @@ MonoBehaviour:
     m_Bits: 512
   interactionRange: 2
   fromPortal: 0
+  lineRenderer: {fileID: 0}
 --- !u!114 &1553681772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6515,7 +6520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallThreshold: -10
-  PlayerSteppedOnHead: 0
 --- !u!1 &1568330369
 GameObject:
   m_ObjectHideFlags: 0
