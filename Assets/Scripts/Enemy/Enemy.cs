@@ -29,6 +29,14 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         startPosition = transform.position;
+        if (transform.Find("HeadTrigger") == null)
+        {
+            GameObject headTrigger = new GameObject("HeadTrigger");
+            headTrigger.transform.SetParent(transform);
+            headTrigger.transform.localPosition = new Vector3(0, 1, 0);
+            headTrigger.AddComponent<BoxCollider2D>().isTrigger = true;
+            headTrigger.AddComponent<HeadTrigger>();
+        }
     }
 
     private void Update()
