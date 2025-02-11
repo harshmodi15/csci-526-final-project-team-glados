@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 68520328}
   m_Layer: 9
   m_Name: Enemy (4)
-  m_TagString: Untagged
+  m_TagString: Hostility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -419,7 +419,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &68520330
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1902,7 +1902,7 @@ GameObject:
   - component: {fileID: 553127505}
   m_Layer: 9
   m_Name: Enemy (5)
-  m_TagString: Untagged
+  m_TagString: Hostility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1970,7 +1970,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &553127507
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4569,7 +4569,7 @@ GameObject:
   - component: {fileID: 1127273912}
   m_Layer: 9
   m_Name: Enemy (2)
-  m_TagString: Untagged
+  m_TagString: Hostility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4637,7 +4637,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1127273914
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4893,7 +4893,7 @@ GameObject:
   - component: {fileID: 1222153330}
   m_Layer: 9
   m_Name: Enemy (6)
-  m_TagString: Untagged
+  m_TagString: Hostility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5361,7 +5361,7 @@ GameObject:
   - component: {fileID: 1338487596}
   m_Layer: 9
   m_Name: Enemy (3)
-  m_TagString: Untagged
+  m_TagString: Hostility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6448,7 +6448,7 @@ MonoBehaviour:
   groundCheck: {fileID: 0}
   portalLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1216
   interactKey: 101
   boxLayer:
     serializedVersion: 2
@@ -6614,7 +6614,7 @@ GameObject:
   - component: {fileID: 1638060075}
   m_Layer: 9
   m_Name: Enemy (1)
-  m_TagString: Untagged
+  m_TagString: Hostility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6682,7 +6682,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1638060077
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7594,7 +7594,7 @@ GameObject:
   - component: {fileID: 1980224789}
   m_Layer: 9
   m_Name: Enemy (8)
-  m_TagString: Untagged
+  m_TagString: Hostility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7662,7 +7662,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &1980224791
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8054,7 +8054,7 @@ GameObject:
   - component: {fileID: 2088618050}
   m_Layer: 9
   m_Name: Enemy (7)
-  m_TagString: Untagged
+  m_TagString: Hostility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
