@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class MovingPlatform : MonoBehaviour
 {
@@ -22,4 +24,14 @@ public class MovingPlatform : MonoBehaviour
             direction = Vector3.right;
         }
     }
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))
+        {
+            collision.transform.position += direction * speed * Time.deltaTime;
+        }
+
+    }
+
 }
