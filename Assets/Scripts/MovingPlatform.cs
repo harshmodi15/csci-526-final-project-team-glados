@@ -25,6 +25,14 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Portal"))
+        {
+            collision.transform.parent = transform;
+        }
+        
+    }
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))

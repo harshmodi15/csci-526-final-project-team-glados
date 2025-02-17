@@ -63,17 +63,17 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         // Handle box interaction
-        if (Input.GetKeyDown(interactKey))
-        {
-            if (heldBox == null)
-            {
-                TryPickupBox();
-            }
-            else
-            {
-                DropBox();
-            }
-        }
+        // if (Input.GetKeyDown(interactKey))
+        // {
+        //     if (heldBox == null)
+        //     {
+        //         TryPickupBox();
+        //     }
+        //     else
+        //     {
+        //         DropBox();
+        //     }
+        // }
 
         // Flip sprite based on movement direction
         if (horizontalInput != 0)
