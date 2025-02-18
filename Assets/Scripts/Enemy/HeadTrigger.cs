@@ -11,6 +11,11 @@ public class HeadTrigger : MonoBehaviour
             float damage = collision.GetComponent<PlayerController>().GetCurrentVelocityMagnitude();
             transform.parent.GetComponent<Enemy>().TakeDamage(damage);
         }
+        else if (collision.CompareTag("Hostility"))
+        {
+            float damage = collision.GetComponent<Rigidbody2D>().velocity.magnitude;
+            transform.parent.GetComponent<Enemy>().TakeDamage(damage);
+        }
     }
     // Start is called before the first frame update
     void Start()

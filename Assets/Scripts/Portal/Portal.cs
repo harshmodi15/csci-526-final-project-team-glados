@@ -45,7 +45,9 @@ public class Portal : MonoBehaviour
         if (Time.time - lastTeleportTime < teleportCooldown) return;
 
         // Check if the object can be teleported
-        if (other.CompareTag("Player") || other.CompareTag("Box"))
+        if (other.CompareTag("Player") || other.CompareTag("Box")
+            || (other.CompareTag("Hostility") && other.GetComponent<Renderer>().bounds.size.y <= 2f)
+            )
         {
             TeleportObject(other);
         }
@@ -64,7 +66,7 @@ public class Portal : MonoBehaviour
         // exit with the same magnitude as entering, but in the direction of the linked portal's normal
         Vector2 exitVelocity = linkedPortal.portalNormal * enterVelocity.magnitude;
         // Teleport the object
-        other.transform.position = teleportPosition + linkedPortal.portalNormal * math.max(transform.localScale.x, transform.localScale.y);
+        other.transform.position = teleportPosition + linkedPortal.portalNormal * math.max(transform.localScale.x, transform.localScale.y) * 1.5f;
         rb.velocity = exitVelocity;
         if (other.CompareTag("Player"))
         {
