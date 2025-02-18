@@ -629,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b67eec3126d674f8929780b8d29255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 30
+  maxSpeed: 20
 --- !u!114 &180433989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b67eec3126d674f8929780b8d29255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 30
+  maxSpeed: 20
 --- !u!114 &394824591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2808,7 +2808,7 @@ Transform:
   m_GameObject: {fileID: 795025202}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.68, y: -3.7859, z: 0}
+  m_LocalPosition: {x: 28.68, y: -4.15, z: 0}
   m_LocalScale: {x: 3.4593039, y: 0.83209795, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3445,7 +3445,7 @@ Transform:
   m_GameObject: {fileID: 936467701}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -32.4, y: 0, z: 0}
+  m_LocalPosition: {x: -32.61, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3463,7 +3463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b67eec3126d674f8929780b8d29255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 30
+  maxSpeed: 20
 --- !u!114 &936467708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5235,7 +5235,7 @@ Transform:
   m_GameObject: {fileID: 1222153328}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.7, y: 0.6601, z: 0}
+  m_LocalPosition: {x: 44.12, y: 0.6601, z: 0}
   m_LocalScale: {x: 1, y: 1.8364975, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5254,8 +5254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  moveSpeed: 2.5
-  patrolDistance: 1.5
+  moveSpeed: 1
+  patrolDistance: 0.3
   groundCheckDistance: 3
   groundLayer:
     serializedVersion: 2
@@ -6871,7 +6871,7 @@ Transform:
   m_GameObject: {fileID: 1553681766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.04, y: -2.56, z: 0}
+  m_LocalPosition: {x: -7.29, y: -2.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6949,7 +6949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b67eec3126d674f8929780b8d29255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 30
+  maxSpeed: 20
 --- !u!58 &1553681773
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7662,7 +7662,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
 --- !u!1 &1857212604
 GameObject:
