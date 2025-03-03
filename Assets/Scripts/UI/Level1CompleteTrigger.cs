@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelCompleteTrigger : MonoBehaviour
+public class Level1CompleteTrigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,7 +12,7 @@ public class LevelCompleteTrigger : MonoBehaviour
             {
                 timer.StopTimer();
             }
-            SceneManager.LoadScene("Level0Complete");
+            SceneManager.LoadScene("Level1Complete");
         }
     }
 }
