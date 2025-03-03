@@ -34,7 +34,9 @@ public class LevelTimer : MonoBehaviour
     public void StopTimer()
     {
         isRunning = false;
-        PlayerPrefs.SetFloat("FinalTime", timeElapsed); // Save the final time for next scene
-        SceneManager.LoadScene("Level1Complete");  // Load Level Complete Scene
+        PlayerPrefs.SetFloat("FinalTime", timeElapsed);
+        PlayerPrefs.Save();
+        Debug.Log("Final Time: " + timeElapsed); // Check if time is stopping correctly
+
     }
 }

@@ -1,21 +1,20 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Import Scene Management
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
     public void LoadBaseLevel()
     {
-        SceneManager.LoadScene("baselvl"); // Change to the exact scene name
+        SceneManager.LoadScene("baselvl");
     }
 
     public void LoadLevel1()
     {
-        SceneManager.LoadScene("SampleScene"); // Change to the exact scene name
+        SceneManager.LoadScene("jack_lvl");
     }
 
     public void QuitGame()
     {
         Application.Quit();
-        Debug.Log("Game Quit!"); // This will only show in the Unity editor
     }
 }
