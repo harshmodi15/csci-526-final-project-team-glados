@@ -8,11 +8,12 @@ TagManager:
   - Trap
   - Hostility
   - Portal
+  - NoPortalSurface
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - GlassPlatforms
   - Water
   - UI
   - Ground
