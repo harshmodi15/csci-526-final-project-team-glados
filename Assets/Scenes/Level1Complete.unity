@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 557701145}
   - component: {fileID: 557701144}
   - component: {fileID: 557701143}
+  - component: {fileID: 557701146}
   - component: {fileID: 557701142}
   m_Layer: 5
   m_Name: MainMenuButton
@@ -414,6 +415,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557701140}
   m_CullTransparentMesh: 1
+--- !u!114 &557701146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557701140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0613d4b0b65e64cdabae9782d6b18318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &630270198
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,7 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cd9101ea5c244d88f942afa9b2ea03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeText1: {fileID: 0}
+  timeText1: {fileID: 1244038438}
 --- !u!4 &980321971
 Transform:
   m_ObjectHideFlags: 0
@@ -937,6 +951,7 @@ GameObject:
   - component: {fileID: 1594772598}
   - component: {fileID: 1594772597}
   - component: {fileID: 1594772596}
+  - component: {fileID: 1594772600}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -1073,6 +1088,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1594772594}
   m_CullTransparentMesh: 1
+--- !u!114 &1594772600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594772594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0613d4b0b65e64cdabae9782d6b18318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &1936989298
 GameObject:
   m_ObjectHideFlags: 0

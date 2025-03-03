@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 352426884}
   - component: {fileID: 352426883}
   - component: {fileID: 352426882}
+  - component: {fileID: 352426886}
   - component: {fileID: 352426885}
   m_Layer: 5
   m_Name: MainMenuButton
@@ -450,6 +451,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 4, y: -4}
   m_UseGraphicAlpha: 1
+--- !u!114 &352426886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352426880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0613d4b0b65e64cdabae9782d6b18318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &477070195
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +859,7 @@ GameObject:
   - component: {fileID: 1275562951}
   - component: {fileID: 1275562950}
   - component: {fileID: 1275562949}
+  - component: {fileID: 1275562953}
   - component: {fileID: 1275562952}
   m_Layer: 5
   m_Name: NextButton
@@ -982,6 +997,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 4, y: -4}
   m_UseGraphicAlpha: 1
+--- !u!114 &1275562953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275562947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0613d4b0b65e64cdabae9782d6b18318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &1305496889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1427,7 @@ GameObject:
   - component: {fileID: 2044424107}
   - component: {fileID: 2044424106}
   - component: {fileID: 2044424105}
+  - component: {fileID: 2044424109}
   - component: {fileID: 2044424108}
   m_Layer: 5
   m_Name: RetryButton
@@ -1536,6 +1565,19 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 4, y: -4}
   m_UseGraphicAlpha: 1
+--- !u!114 &2044424109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044424103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0613d4b0b65e64cdabae9782d6b18318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
