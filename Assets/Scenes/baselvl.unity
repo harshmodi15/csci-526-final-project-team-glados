@@ -3030,7 +3030,7 @@ Transform:
   m_GameObject: {fileID: 795008592}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 0.652379, z: 0}
+  m_LocalPosition: {x: -0.6, y: 2.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4125,7 +4125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &986731615
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4142,8 +4142,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -51.8, y: 1.73}
-  m_SizeDelta: {x: 269.0416, y: 89.9728}
+  m_AnchoredPosition: {x: -53.117393, y: 1.73}
+  m_SizeDelta: {x: 321.6883, y: 89.9728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &986731616
 MonoBehaviour:
@@ -4178,12 +4178,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press ''A'' to move left.
+  m_Text: 'Press ''E'' to place a mirror.
 
-    Press ''D'' to move right.
-
-    Press ''Space''
-    to jump.'
+    Press ''F'' to turn on/off aiming.'
 --- !u!222 &986731617
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5583,7 +5580,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 9
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+  m_Color: {r: 0.30113026, g: 0.8988507, b: 0.9528302, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5602,7 +5599,7 @@ Transform:
   m_GameObject: {fileID: 1176027738}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.83, y: 3.96, z: 0}
+  m_LocalPosition: {x: 85.53, y: 5.96, z: 0}
   m_LocalScale: {x: 2, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

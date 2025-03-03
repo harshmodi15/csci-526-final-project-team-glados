@@ -52,8 +52,9 @@ public class PlayerController : MonoBehaviour
             lineRenderer.startWidth = 0.1f;
             lineRenderer.endWidth = 0.1f;
             lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-            lineRenderer.startColor = Color.red;
-            lineRenderer.endColor = Color.red;
+            Color beigeColor = new Color(0.9f, 0.8f, 0.7f, 1f); 
+            lineRenderer.startColor = beigeColor;
+            lineRenderer.endColor = beigeColor;
             lineRenderer.sortingOrder = 100;
         }
     }
