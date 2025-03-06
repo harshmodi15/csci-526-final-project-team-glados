@@ -37,4 +37,9 @@ public class MainCamera : MonoBehaviour
 
         transform.position = new Vector3(positionX, positionY, transform.position.z);
     }
+
+    public void ResetPlayer(Transform respawnedPlayer)
+    {
+        player = respawnedPlayer;
+    }
 }

@@ -52,5 +52,18 @@ public class PlayerRespawn : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+
+        // Remvoe portals upon respawn for anticheating
+        PortalManager portalManager = FindObjectOfType<PortalManager>();
+        if(portalManager != null)
+        {
+            portalManager.RemovePortals();
+        }
+
+        MainCamera cameraScript = Camera.main.GetComponent<MainCamera>();
+        if(cameraScript != null)
+        {
+            cameraScript.ResetPlayer(transform);
+        }
     }
 }
