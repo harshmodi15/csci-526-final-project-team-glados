@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     private Vector2 startPosition;
     private bool movingRight = true;
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
+    protected SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
@@ -111,10 +111,10 @@ public class Enemy : MonoBehaviour
     {
         if (spriteRenderer != null)
         {
-            Color originalColor = spriteRenderer.color;
+            Color lastColor = spriteRenderer.color;
             spriteRenderer.color = Color.red;
             yield return new WaitForSeconds(0.1f);
-            spriteRenderer.color = originalColor;
+            spriteRenderer.color = lastColor;
         }
     }
 
