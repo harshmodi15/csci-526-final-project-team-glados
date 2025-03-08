@@ -9,6 +9,7 @@ TagManager:
   - Hostility
   - Portal
   - NoPortalSurface
+  - Mirror
   layers:
   - Default
   - TransparentFX

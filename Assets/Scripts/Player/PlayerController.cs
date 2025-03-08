@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 intermediatePosition { get; set; }
     public bool fromPortal;
     public LineRenderer lineRenderer;
+    public bool isReflected = false;
 
     // public int maxReflections = 5;
     [SerializeField] private LayerMask mirrorLayer;
@@ -99,55 +100,8 @@ public class PlayerController : MonoBehaviour
             lineRenderer.enabled = isLineVisible;
         }
         
-        // Due to the added mirror functionality, we need to get the ending position of the line even if the line is not visible
-        // if (isLineVisible)
-        {
-            Vector2 start = transform.position;
-            Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-            // RaycastHit2D hit = Physics2D.Raycast(start, direction, maxShootingDistance, portalLayer);
-            // // line rendering above all other objects
-            // if (hit.collider != null)
-            // {
-            //     lineRenderer.SetPosition(0, start);
-            //     lineRenderer.SetPosition(1, hit.point);
-            // }
-            // else
-            // {
-            //     lineRenderer.SetPosition(0, start);
-            //     lineRenderer.SetPosition(1, start + direction * maxShootingDistance);
-            // }
-            List<Vector3> linePositions = new List<Vector3> { start };
-            float remainingDistance = maxShootingDistance;
-
-            while (remainingDistance > 0)
-            {
-                RaycastHit2D hit = Physics2D.Raycast(start, direction, remainingDistance, portalLayer | mirrorLayer);
-                
-                if (hit.collider == null)
-                {
-                    linePositions.Add(start + direction * remainingDistance);
-                    break;
-                }
-
-                linePositions.Add(hit.point);
-
-                // If we hit a mirror, reflect and continue
-                if (((1 << hit.collider.gameObject.layer) & mirrorLayer) != 0)
-                {
-                    direction = Vector2.Reflect(direction, hit.normal);
-                    start = hit.point + direction * 0.01f; // Offset to prevent self-hits
-                    remainingDistance -= hit.distance;
-                }
-                else
-                {
-                    break; // Hit something other than a mirror, stop tracing
-                }
-            }
-            endingPosition = linePositions[^1];
-            intermediatePosition = linePositions[^2];
-            lineRenderer.positionCount = linePositions.Count;
-            lineRenderer.SetPositions(linePositions.ToArray());
-        }
+        DrawLineOfSight();
+        
     }
     // private void OnCollisionEnter2D(Collision2D collision)
     // {
@@ -194,6 +148,49 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = moveVelocity;
+    }
+
+    private void DrawLineOfSight()
+    {
+        // Due to the added mirror functionality, we need to get the ending position of the line even if the line is not visible
+        // if (isLineVisible)
+        {
+            Vector2 start = transform.position;
+            Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+            List<Vector3> linePositions = new List<Vector3> { start };
+            float remainingDistance = maxShootingDistance;
+            isReflected = false;
+
+            while (remainingDistance > 0)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(start, direction, remainingDistance, portalLayer | mirrorLayer);
+                
+                if (hit.collider == null)
+                {
+                    linePositions.Add(start + direction * remainingDistance);
+                    break;
+                }
+
+                linePositions.Add(hit.point);
+
+                // If we hit a mirror, reflect and continue
+                if (((1 << hit.collider.gameObject.layer) & mirrorLayer) != 0)
+                {
+                    isReflected = true;
+                    direction = Vector2.Reflect(direction, hit.normal);
+                    start = hit.point + direction * 0.01f; // Offset to prevent self-hits
+                    remainingDistance -= hit.distance;
+                }
+                else
+                {
+                    break; // Hit something other than a mirror, stop tracing
+                }
+            }
+            endingPosition = linePositions[^1];
+            intermediatePosition = linePositions[^2];
+            lineRenderer.positionCount = linePositions.Count;
+            lineRenderer.SetPositions(linePositions.ToArray());
+        }
     }
 
     private void TryPickupBox()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserButton : MonoBehaviour
 {
     public LaserController laser;
-    private bool objectOnButton = false;
+    // private bool objectOnButton = false;
     // Start is called before the first frame update
     void Start()
     {

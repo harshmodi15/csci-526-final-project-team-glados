@@ -57,6 +57,11 @@ public class PortalManager : MonoBehaviour
         RaycastHit2D hit = GetGunRaycastHit();
         if (hit.collider != null)
         {
+            if(player.isReflected)
+            {
+                //Debug.Log("Tried to make a mirror through reflection");
+                return;
+            }
             // Check if we can place a mirror here
             if (!IsValidMirrorPosition(hit.point))
                 return;
@@ -156,6 +161,17 @@ public class PortalManager : MonoBehaviour
         portal1.LinkedPortal = portal2;
         portal2.LinkedPortal = portal1;
     }
+
+    // For removing portals particularly upon respawn
+    public void RemovePortals()
+    {
+        foreach(Portal portal in activePortals)
+        {
+            Destroy(portal.gameObject);
+        }
+        activePortals.Clear();
+    }
+
 }
 
 public enum PortalType
