@@ -7,6 +7,10 @@ public class RedEnemy : Enemy
     // Count the number of times the player hits
     private int hitCount = 0;
 
+    // Define colors for hit states
+    private Color firstColorAfterHit = new Color(0.3f, 0f, 0.5f, 1f);
+    private Color secondColorAfterHit = new Color(0.6f, 0.3f, 1f, 1f);
+    
     protected override void Update() {
         base.Update();
     }
@@ -16,17 +20,25 @@ public class RedEnemy : Enemy
         if (damage >= 9999f) 
         {
             Debug.Log("RedEnemy was hit by a Box! Instantly dying.");
-            Die(); // Die instantly
-            return; // Exit the function
+            Die(); 
+            return;
         }
         // Increase the hit counter every time the player hits the enemy
         hitCount++;
 
         StartCoroutine(DamageFlash());
 
-        if (hitCount >= 3) {
-            Die();
+        if (hitCount == 1) {
+            spriteRenderer.color = firstColorAfterHit;
         }
+        else if (hitCount == 2) {
+            spriteRenderer.color = secondColorAfterHit;
+        }
+        else if (hitCount >= 3) {
+            Die();
+            return;
+        }
+        StartCoroutine(DamageFlash());
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
