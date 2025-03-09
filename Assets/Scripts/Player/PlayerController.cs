@@ -124,8 +124,9 @@ public class PlayerController : MonoBehaviour
         Vector2 moveVelocity = rb.velocity;
         if (fromPortal)
         {
-            moveVelocity.x = moveVelocity.x + horizontalInput * moveSpeed * 0.05f;
-
+            //moveVelocity.x = moveVelocity.x + horizontalInput * moveSpeed * 0.05f;
+            // To make the movement smoother, abandon the previous velocity
+            moveVelocity.x = horizontalInput * moveSpeed;
         }
         else
         {
