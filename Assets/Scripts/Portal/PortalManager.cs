@@ -7,6 +7,7 @@ public class PortalManager : MonoBehaviour
     [SerializeField] private GameObject portalPrefab;
     [SerializeField] private GameObject mirrorPrefab;
     [SerializeField] private LayerMask portalPlacementMask;
+    [SerializeField] private LayerMask mirrorPlacementMask;
     [SerializeField] private float minPortalDistance = 1f;
 
     private List<Portal> activePortals = new List<Portal>();
@@ -27,6 +28,12 @@ public class PortalManager : MonoBehaviour
 
     private void HandleGunCreation()
     {
+        
+        // Visual indicator in game view
+        if (player.AimLineIntersectsWithLaser())
+        {
+            return;
+        }
         // Left click for blue portal
         if (Input.GetMouseButtonDown(0))
         {
@@ -44,17 +51,17 @@ public class PortalManager : MonoBehaviour
         }
     }
 
-    private RaycastHit2D GetGunRaycastHit()
+    private RaycastHit2D GetGunRaycastHit(LayerMask layerMask)
     {
         Vector2 startPosition = player.intermediatePosition;
         Vector2 endPosition = player.endingPosition;
         Vector2 direction = (endPosition - startPosition).normalized;
-        return Physics2D.Raycast(startPosition, direction, Mathf.Infinity, portalPlacementMask);
+        return Physics2D.Raycast(startPosition, direction, Mathf.Infinity, layerMask);
     }
 
     private void CreateMirror()
     {
-        RaycastHit2D hit = GetGunRaycastHit();
+        RaycastHit2D hit = GetGunRaycastHit(mirrorPlacementMask);
         if (hit.collider != null)
         {
             if(player.isReflected)
@@ -99,7 +106,7 @@ public class PortalManager : MonoBehaviour
 
     private void CreatePortal(PortalType type)
     {
-        RaycastHit2D hit = GetGunRaycastHit();
+        RaycastHit2D hit = GetGunRaycastHit(portalPlacementMask);
         if (hit.collider != null)
         {
             if (hit.transform.CompareTag("NoPortalSurface"))

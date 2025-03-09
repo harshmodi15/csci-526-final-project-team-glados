@@ -15,11 +15,13 @@ public class ThrowableBox : MonoBehaviour
     private Transform holder;
     private Vector3 originalScale;
     private float currentVelocityMagnitude;
-
+    private bool isPushed;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         originalScale = transform.localScale;
+        isPushed = false;
     }
 
     private void Update()
@@ -71,20 +73,48 @@ public class ThrowableBox : MonoBehaviour
         rb.velocity = throwDirection * throwForce;
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Mirror"))
+        {
+            collision.transform.parent = transform;
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
     {
         // Check if we hit an enemy
         if (((1 << collision.gameObject.layer) & enemyLayer) != 0)
         {
             // Calculate damage based on velocity
             float damage = currentVelocityMagnitude * damageMultiplier;
-            print($"Dealt {damage} damage to {collision.gameObject.name}");
-            // Try to apply damage to enemy
-            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            if (enemy != null)
+            if (isPushed)
             {
-                enemy.TakeDamage(damage);
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
             }
+            // Try to apply damage to enemy
+            HeadTrigger headTrigger = collision.gameObject.GetComponent<HeadTrigger>();
+            if (headTrigger != null)
+            {
+                headTrigger.transform.parent.GetComponent<Enemy>().TakeDamage(damage);
+            }
+        }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            isPushed = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & enemyLayer) != 0)
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+        }
+        else if (collision.gameObject.CompareTag("Player"))
+        {
+            isPushed = false;
+            rb.constraints = RigidbodyConstraints2D.None;
         }
     }
 

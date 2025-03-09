@@ -31,8 +31,19 @@ public class MovingPlatform : MonoBehaviour
         {
             collision.transform.parent = transform;
         }
-        
     }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Mirror"))
+        {   
+            if (collision.transform.parent == null)
+            {
+                collision.transform.position += direction * speed * Time.deltaTime;
+            }
+        }
+    }
+
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Box"))
