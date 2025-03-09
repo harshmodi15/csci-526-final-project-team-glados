@@ -28,6 +28,12 @@ public class PortalManager : MonoBehaviour
 
     private void HandleGunCreation()
     {
+        
+        // Visual indicator in game view
+        if (player.AimLineIntersectsWithLaser())
+        {
+            return;
+        }
         // Left click for blue portal
         if (Input.GetMouseButtonDown(0))
         {

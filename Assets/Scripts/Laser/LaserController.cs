@@ -17,6 +17,9 @@ public class LaserController : MonoBehaviour
 
     private PlayerRespawn playerRespawn;
     [SerializeField] private LayerMask mirrorLayer;
+    
+    // Store laser line segments for intersection checking
+    private List<Vector3> laserPositions = new List<Vector3>();
 
     void Awake()
     {
@@ -70,7 +73,11 @@ public class LaserController : MonoBehaviour
         lineRenderer.enabled = true;
         Vector2 start = laserOrigin.position;
         Vector2 direction = laserOrigin.up;
-        List<Vector3> linePositions = new List<Vector3> { start };
+        
+        // Clear the previous list
+        laserPositions.Clear();
+        laserPositions.Add(start);
+        
         float remainingDistance = maxShootingDistance;
 
         while (remainingDistance > 0)
@@ -79,7 +86,7 @@ public class LaserController : MonoBehaviour
             
             if (hit)
             {
-                linePositions.Add(hit.point);
+                laserPositions.Add(hit.point);
                 if (((1 << hit.collider.gameObject.layer) & mirrorLayer) != 0)
                 {
                     direction = Vector2.Reflect(direction, hit.normal);
@@ -104,21 +111,71 @@ public class LaserController : MonoBehaviour
                     break;
                 }
 
+                // just continue if we hit a portal
+                if (hit.collider.CompareTag("Portal"))
+                {
+                    start = hit.point + direction * 0.05f; // Offset to prevent self-hits
+                    remainingDistance -= hit.distance;
+                    continue;
+                }
+
                 break;
             }
             else
             {
-                linePositions.Add(start + direction * maxShootingDistance);
+                laserPositions.Add(start + direction * remainingDistance);
                 break;
             }
         }
-        lineRenderer.positionCount = linePositions.Count;
-        lineRenderer.SetPositions(linePositions.ToArray());
+        
+        // Set the positions for the line renderer
+        lineRenderer.positionCount = laserPositions.Count;
+        lineRenderer.SetPositions(laserPositions.ToArray());
     }
 
     // For button presses
     public void SetActive(bool state)
     {
         isOn = state;
+    }
+    
+    // Check if a line segment intersects with any part of the laser beam
+    public bool IntersectsWithLine(Vector2 lineStart, Vector2 lineEnd)
+    {
+        if (!isOn || laserPositions.Count < 2)
+            return false;
+            
+        // Check each segment of the laser against the provided line segment
+        for (int i = 0; i < laserPositions.Count - 1; i++)
+        {
+            Vector2 laserSegmentStart = laserPositions[i];
+            Vector2 laserSegmentEnd = laserPositions[i + 1];
+            
+            if (LineSegmentsIntersect(lineStart, lineEnd, laserSegmentStart, laserSegmentEnd))
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    // Helper method to check if two line segments intersect
+    private bool LineSegmentsIntersect(Vector2 a1, Vector2 a2, Vector2 b1, Vector2 b2)
+    {
+        // Line AB represented as a1 + t * (a2 - a1)
+        // Line CD represented as b1 + s * (b2 - b1)
+        
+        float denominator = (b2.y - b1.y) * (a2.x - a1.x) - (b2.x - b1.x) * (a2.y - a1.y);
+        
+        // Lines are parallel or collinear
+        if (Mathf.Approximately(denominator, 0f))
+            return false;
+            
+        float ua = ((b2.x - b1.x) * (a1.y - b1.y) - (b2.y - b1.y) * (a1.x - b1.x)) / denominator;
+        float ub = ((a2.x - a1.x) * (a1.y - b1.y) - (a2.y - a1.y) * (a1.x - b1.x)) / denominator;
+        
+        // Check if intersection point is on both line segments
+        return ua >= 0f && ua <= 1f && ub >= 0f && ub <= 1f;
     }
 }

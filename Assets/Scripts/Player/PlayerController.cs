@@ -237,4 +237,73 @@ public class PlayerController : MonoBehaviour
     {
         return currentVelocityMagnitude;
     }
+    
+    // Method to check if player's aiming line intersects with any laser in the scene
+    public bool AimLineIntersectsWithLaser()
+    {
+        // Gather all laser controllers in the scene
+        LaserController[] lasers = FindObjectsOfType<LaserController>();
+        if (lasers.Length == 0)
+        {
+            return false;
+        }
+            
+        
+        // Reconstruct the aiming line using the same logic as DrawLineOfSight
+        Vector2 start = transform.position;
+        Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        List<Vector2> lineSegmentStarts = new List<Vector2>();
+        List<Vector2> lineSegmentEnds = new List<Vector2>();
+        float remainingDistance = maxShootingDistance;
+        
+        // Build line segments the same way we draw them
+        Vector2 currentStart = start;
+        while (remainingDistance > 0)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(currentStart, direction, remainingDistance, portalLayer | mirrorLayer);
+            
+            Vector2 currentEnd;
+            if (hit.collider == null)
+            {
+                currentEnd = currentStart + direction * remainingDistance;
+                lineSegmentStarts.Add(currentStart);
+                lineSegmentEnds.Add(currentEnd);
+                break;
+            }
+            
+            currentEnd = hit.point;
+            lineSegmentStarts.Add(currentStart);
+            lineSegmentEnds.Add(currentEnd);
+            
+            // If we hit a mirror, reflect and continue
+            if (((1 << hit.collider.gameObject.layer) & mirrorLayer) != 0)
+            {
+                direction = Vector2.Reflect(direction, hit.normal);
+                currentStart = hit.point + direction * 0.01f; // Offset to prevent self-hits
+                remainingDistance -= hit.distance;
+            }
+            else
+            {
+                break; // Hit something other than a mirror, stop tracing
+            }
+        }
+        
+        
+        // Check each segment of the player's aim line against each laser
+        for (int i = 0; i < lineSegmentStarts.Count; i++)
+        {
+            Vector2 segmentStart = lineSegmentStarts[i];
+            Vector2 segmentEnd = lineSegmentEnds[i];
+            
+            foreach (LaserController laser in lasers)
+            {
+                if (laser.isOn && laser.IntersectsWithLine(segmentStart, segmentEnd))
+                {
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
 }
