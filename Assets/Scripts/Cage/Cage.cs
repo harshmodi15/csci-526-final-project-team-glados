@@ -39,7 +39,7 @@ public class Cage : MonoBehaviour
     {
         if (!isCaptured) return;
         lastReleaseTime = Time.time;
-        capturedObject.transform.position = transform.position + new Vector3(normal.x, normal.y, 0);
+        capturedObject.transform.position = transform.position;
         capturedObject.SetActive(true);
         capturedObject = null;
         isCaptured = false;
