@@ -5,12 +5,12 @@ public class MainMenuController : MonoBehaviour
 {
     public void LoadBaseLevel()
     {
-        SceneManager.LoadScene("baselvl");
+        SceneManager.LoadScene("lvl0");
     }
 
     public void LoadLevel1()
     {
-        SceneManager.LoadScene("jack_lvl");
+        SceneManager.LoadScene("lvl1");
     }
 
     public void QuitGame()

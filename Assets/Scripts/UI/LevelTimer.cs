@@ -31,6 +31,11 @@ public class LevelTimer : MonoBehaviour
         timerText.text = $"Time: {minutes:00}:{seconds:00}";
     }
 
+    public float GetTime()
+    {
+        return timeElapsed;
+    }
+
     public void StopTimer()
     {
         isRunning = false;

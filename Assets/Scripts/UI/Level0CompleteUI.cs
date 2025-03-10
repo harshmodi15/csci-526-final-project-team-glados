@@ -17,6 +17,7 @@ public class Level0CompleteUI : MonoBehaviour
 
     public void RetryLevel()
     {
+        PlayerStats.IncreaseRetryCount();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
@@ -27,6 +28,7 @@ public class Level0CompleteUI : MonoBehaviour
 
     public void NextLevel()
     {
+        PlayerStats.IncreaseNextCount();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

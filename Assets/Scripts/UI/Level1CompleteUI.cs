@@ -12,10 +12,12 @@ public class Level1CompleteUI : MonoBehaviour
         int minutes = Mathf.FloorToInt(finalTime / 60);
         int seconds = Mathf.FloorToInt(finalTime % 60);
         timeText1.text = "Time:\n" + string.Format("{0:00}:{1:00}", minutes, seconds);
+        Debug.Log("Loaded Final Time: " + finalTime);
     }
 
     public void RetryLevel()
     {
+        PlayerStats.IncreaseRetryCount();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
