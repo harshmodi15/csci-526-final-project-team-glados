@@ -10,6 +10,8 @@ TagManager:
   - Portal
   - NoPortalSurface
   - Mirror
+  - Laser
+  - Cage
   layers:
   - Default
   - TransparentFX
