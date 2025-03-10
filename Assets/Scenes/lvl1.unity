@@ -830,11 +830,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 2
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4063
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: b391a922504528f4d8097d31f9631ac0, type: 2}
   m_TargetDisplay: 0
@@ -3520,6 +3520,7 @@ GameObject:
   - component: {fileID: 1292026509}
   - component: {fileID: 1292026511}
   - component: {fileID: 1292026510}
+  - component: {fileID: 1292026512}
   m_Layer: 5
   m_Name: PreviewRawImage
   m_TagString: Untagged
@@ -3581,6 +3582,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292026508}
   m_CullTransparentMesh: 1
+--- !u!114 &1292026512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1292026508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!4 &1295585540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3175608421948050689, guid: 47f373f05b849440bb5ddc56afe58a5e, type: 3}
