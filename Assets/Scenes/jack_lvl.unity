@@ -2066,6 +2066,7 @@ GameObject:
   - component: {fileID: 1176027740}
   - component: {fileID: 1176027739}
   - component: {fileID: 1176027741}
+  - component: {fileID: 1176027742}
   m_Layer: 11
   m_Name: TempMirror
   m_TagString: Mirror
@@ -2169,7 +2170,52 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!61 &1176027742
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176027738}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3055,6 +3101,7 @@ MonoBehaviour:
   interactionRange: 2
   fromPortal: 0
   lineRenderer: {fileID: 0}
+  isReflected: 0
   mirrorLayer:
     serializedVersion: 2
     m_Bits: 2048
@@ -4279,6 +4326,9 @@ MonoBehaviour:
   portalPlacementMask:
     serializedVersion: 2
     m_Bits: 1216
+  mirrorPlacementMask:
+    serializedVersion: 2
+    m_Bits: 1472
   minPortalDistance: 1
 --- !u!4 &2097476303
 Transform:
