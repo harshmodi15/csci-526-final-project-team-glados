@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 9608472cae7cc42a6b4789e152035a48
   - enabled: 1
-    path: Assets/Scenes/baselvl.unity
+    path: Assets/Scenes/lvl0.unity
     guid: 45d745dcbb36d4324b64f41ce173e88f
   - enabled: 1
     path: Assets/Scenes/Level0Complete.unity
     guid: bca88896ed83a4be58c19906774ab047
   - enabled: 1
-    path: Assets/Scenes/jack_lvl.unity
+    path: Assets/Scenes/lvl1.unity
     guid: 3b64a380d995c4945b94599fc3986958
   - enabled: 1
     path: Assets/Scenes/Level1Complete.unity
