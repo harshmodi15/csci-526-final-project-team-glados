@@ -19,7 +19,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"D:/github/paired-prototype-spring-25-tuesday-team-glados/WebGL Builds;;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"/Users/harshmodi/Downloads/CSCI 526/Homework/Homework 3/Portal Mario/PortalMario_AlphaBuild/PortalMario_AlphaBuild/AlphaBuild;D:/github/paired-prototype-spring-25-tuesday-team-glados/WebGL Builds;;;;;;;;\"}"
             }
         ]
     }
