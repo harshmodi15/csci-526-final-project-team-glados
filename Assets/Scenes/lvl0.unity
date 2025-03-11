@@ -3193,7 +3193,7 @@ GameObject:
   - component: {fileID: 1093284425}
   - component: {fileID: 1093284427}
   - component: {fileID: 1093284426}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Celling (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5142,7 +5142,7 @@ GameObject:
   - component: {fileID: 1764397682}
   - component: {fileID: 1764397684}
   - component: {fileID: 1764397683}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Ground (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
