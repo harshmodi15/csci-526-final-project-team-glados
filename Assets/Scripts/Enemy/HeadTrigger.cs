@@ -21,19 +21,6 @@ public class HeadTrigger : MonoBehaviour
             Rigidbody2D boxRb = collision.GetComponent<Rigidbody2D>();
             // Instantly kill RedEnemy
 
-            // if (enemy is RedEnemy) 
-            // {
-            //     Debug.Log("RedEnemy hit on head by box! Instantly killing.");
-            //     // High damage ensures instant kill
-            //     enemy.TakeDamage(9999f);
-            // }
-            // // Normal enemy takes normal damage
-            // else 
-            // {
-            //     float damage = collision.GetComponent<Rigidbody2D>().velocity.magnitude;
-            //     enemy.TakeDamage(damage);
-            // }
-
             if (boxRb != null)
             {
                 float boxSpeed = boxRb.velocity.magnitude;
