@@ -17,7 +17,11 @@ public class Level0CompleteTrigger : MonoBehaviour
             int deaths = PlayerStats.deathCount;
             int retries = PlayerStats.retryCount;
 
-            FirebaseManager.instance.UpdateLevelCompletion(0, completionTime, deaths, retries);
+            if (FirebaseManager.instance != null)
+            {
+                FirebaseManager.instance.UpdateLevelCompletion(0, completionTime, deaths, retries);
+            }
+
             SceneManager.LoadScene("Level0Complete");
         }
     }
