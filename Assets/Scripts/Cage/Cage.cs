@@ -28,7 +28,7 @@ public class Cage : MonoBehaviour
     {
         if (capturedObject == null) isCaptured = false;
         if (isCaptured || Time.time - lastReleaseTime < releaseCooldown) return;
-        if (capturedObject != null && other.gameObject != capturedObject)
+        if (capturedObject != null && other.gameObject != capturedObject && IsCapturedObject(other.gameObject))
         {
             if (capturedObject.CompareTag("Hostility"))
             {
@@ -37,7 +37,7 @@ public class Cage : MonoBehaviour
                 capturedObject.GetComponent<SpriteRenderer>().color = enemyColor;
             }
         }
-        if (other.CompareTag("Box") || (other.CompareTag("Hostility") && !Enemy.IsTallEnemy(other.gameObject)))
+        if (IsCapturedObject(other.gameObject))
         {
             // Destroy the box and clone it to the cage
             capturedObject = Instantiate(other.gameObject);
@@ -53,6 +53,10 @@ public class Cage : MonoBehaviour
         }
     }
 
+    private bool IsCapturedObject(GameObject obj)
+    {
+        return obj.CompareTag("Box") || (obj.CompareTag("Hostility") && !Enemy.IsTallEnemy(obj));
+    }
     public void Release()
     {
         if (!isCaptured || capturedObject == null) return;
