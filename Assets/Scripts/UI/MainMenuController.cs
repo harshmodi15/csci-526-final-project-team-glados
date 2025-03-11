@@ -12,6 +12,7 @@ public class MainMenuController : MonoBehaviour
     public void LoadLevel1()
     {
         SceneManager.LoadScene("lvl1");
+        PlayerStats.IncreaseLevelNumber();
         FirebaseManager.instance.LogLevelStart(1);
     }
 

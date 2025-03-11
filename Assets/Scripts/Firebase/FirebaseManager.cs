@@ -24,11 +24,11 @@ public class FirebaseManager : MonoBehaviour
 
     public void SendData(string path, string json)
     {
-        // if (Application.platform != RuntimePlatform.WebGLPlayer)
-        // {
-        //     Debug.Log("Skipping Firebase Logging: Running in Unity Editor or Standalone.");
-        //     return;
-        // }
+        if (Application.platform != RuntimePlatform.WebGLPlayer)
+        {
+            Debug.Log("Skipping Firebase Logging: Running in Unity Editor or Standalone.");
+            return;
+        }
 
         StartCoroutine(PostToDatabase(path, json));
     }
@@ -60,7 +60,7 @@ public class FirebaseManager : MonoBehaviour
         string playerID = PlayerStats.playerID;
         string path = $"levelCompletion/{playerID}/level_{levelNumber}";
 
-        string json = $"{{\"completionTime\": \"N/A\", \"deaths\": 0, \"retries\": 0}}";
+        string json = $"{{\"completionTime\": \"N/A\", \"deaths\": 0, \"retries\": 0, \"completed\": false}}";
         SendData(path, json);
     }
 

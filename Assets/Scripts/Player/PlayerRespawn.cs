@@ -47,7 +47,7 @@ public class PlayerRespawn : MonoBehaviour
     public void Respawn()
     {
         PlayerStats.IncreaseDeathCount();
-        FirebaseManager.instance.UpdateDeathCount(0);
+        FirebaseManager.instance.UpdateDeathCount(PlayerStats.levelNumber);
         
         transform.position = startPosition;
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
