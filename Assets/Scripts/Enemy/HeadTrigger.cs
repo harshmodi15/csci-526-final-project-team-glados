@@ -35,7 +35,7 @@ public class HeadTrigger : MonoBehaviour
                     if (boxSpeed >= requiredSpeed) 
                     {
                         Debug.Log("RedEnemy hit on head by high-speed box! Instantly dying.");
-                        enemy.TakeDamage(9999f); 
+                        enemy.TakeDamage(9999f);
                     }
                     else if (boxSpeed >= normalspeed) {
                         Debug.Log("Box hit detected! counting as one hit");
@@ -45,6 +45,10 @@ public class HeadTrigger : MonoBehaviour
                     {
                         Debug.Log("Box hit RedEnemy but was too slow!");
                     }
+                }
+                else
+                {
+                    enemy.TakeDamage(1f);
                 }
             }
         }
