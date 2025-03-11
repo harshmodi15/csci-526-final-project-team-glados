@@ -24,7 +24,8 @@ public class HeadTrigger : MonoBehaviour
             if (boxRb != null)
             {
                 float boxSpeed = boxRb.velocity.magnitude;
-                float requiredSpeed = 10f;
+                float requiredSpeed = 7f;
+                float normalspeed = 1f;
 
                 Debug.Log("Box speed: " + boxSpeed);
 
@@ -35,6 +36,10 @@ public class HeadTrigger : MonoBehaviour
                     {
                         Debug.Log("RedEnemy hit on head by high-speed box! Instantly dying.");
                         enemy.TakeDamage(9999f); 
+                    }
+                    else if (boxSpeed >= normalspeed) {
+                        Debug.Log("Box hit detected! counting as one hit");
+                        enemy.TakeDamage(1);
                     }
                     else
                     {
