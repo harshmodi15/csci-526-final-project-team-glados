@@ -29,7 +29,7 @@ public class Level0CompleteUI : MonoBehaviour
 
     public void NextLevel()
     {
-        PlayerStats.IncreaseLevelNumber();
+        PlayerStats.levelNumber = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         FirebaseManager.instance.LogLevelStart(1);
     }

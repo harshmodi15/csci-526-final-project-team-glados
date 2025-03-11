@@ -26,11 +26,6 @@ public class PlayerStats : MonoBehaviour
         retryCount++;
     }
 
-    public static void IncreaseLevelNumber()
-    {
-        levelNumber++;
-    }
-
     public static void ResetStats()
     {
         deathCount = 0;
